@@ -1,0 +1,7 @@
+name: Energy
+version: 1.0.0
+main: mcbesser.energy.EnergyPlugin
+api-version: '1.21'
+authors:
+  - McBesser
+description: Chargeable batteries and a charger built for Energy.
