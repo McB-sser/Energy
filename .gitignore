@@ -9,6 +9,7 @@ replay_pid*
 # Build output
 build/
 target/
+/.cp.txt
 out/
 bin/
 run/
