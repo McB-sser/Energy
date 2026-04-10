@@ -1,4 +1,4 @@
-package mcbesser.energy;
+﻿package mcbesser.energy;
 
 import java.util.Objects;
 import net.kyori.adventure.text.Component;
@@ -119,7 +119,7 @@ public final class UpgradeMenuListener implements Listener {
         int level = book == null ? 0 : getUnbreakingLevel(book);
         player.getInventory().setItemInMainHand(batteryService.applyBatteryUpgrade(handItem, level));
         player.sendMessage(Component.text(
-            "Batterie-Kapazitaet: " + batteryService.getMaxCharge(player.getInventory().getItemInMainHand()),
+            "Batterie-Kapazit\u00e4t: " + batteryService.getMaxCharge(player.getInventory().getItemInMainHand()),
             NamedTextColor.LIGHT_PURPLE
         ));
     }

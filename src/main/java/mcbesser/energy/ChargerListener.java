@@ -1,4 +1,4 @@
-package mcbesser.energy;
+﻿package mcbesser.energy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -280,7 +280,7 @@ public final class ChargerListener implements Listener {
         Inventory inventory = Bukkit.createInventory(
             new ChargerMenuHolder(location),
             27,
-            Component.text("Ladegeraet", NamedTextColor.GOLD)
+            Component.text("Ladeger\u00e4t", NamedTextColor.GOLD)
         );
 
         ItemStack filler = pane(Material.BLACK_STAINED_GLASS_PANE, " ");

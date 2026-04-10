@@ -1,4 +1,4 @@
-package mcbesser.energy;
+﻿package mcbesser.energy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,10 +63,10 @@ public final class BatteryService {
     public ItemStack createChargerItem() {
         ItemStack item = new ItemStack(Material.BLAST_FURNACE);
         ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text("Ladegeraet", NamedTextColor.GOLD));
+        meta.displayName(Component.text("Ladeger\u00e4t", NamedTextColor.GOLD));
         List<Component> lore = new ArrayList<>();
-        lore.add(Component.text("Laedt Batterien mit Brennstoff.", NamedTextColor.GRAY));
-        lore.add(Component.text("Effizienz-Buch erhoeht Energie pro Sekunde.", NamedTextColor.LIGHT_PURPLE));
+        lore.add(Component.text("L\u00e4dt Batterien mit Brennstoff.", NamedTextColor.GRAY));
+        lore.add(Component.text("Effizienz-Buch erh\u00f6ht Energie pro Sekunde.", NamedTextColor.LIGHT_PURPLE));
         meta.lore(lore);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addEnchant(Enchantment.INFINITY, 1, true);
@@ -181,8 +181,8 @@ public final class BatteryService {
 
         List<Component> lore = new ArrayList<>();
         lore.add(Component.text("Ladung: " + charge + " / " + maxCharge, NamedTextColor.GRAY));
-        lore.add(Component.text("Kapazitaet: Haltbarkeit " + upgradeLevel, NamedTextColor.DARK_PURPLE));
-        lore.add(Component.text("Rechtsklick oeffnet Akku-Menue.", NamedTextColor.YELLOW));
+        lore.add(Component.text("Kapazit\u00e4t: Haltbarkeit " + upgradeLevel, NamedTextColor.DARK_PURPLE));
+        lore.add(Component.text("Rechtsklick \u00f6ffnet Akku-Men\u00fc.", NamedTextColor.YELLOW));
         meta.lore(lore);
 
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
