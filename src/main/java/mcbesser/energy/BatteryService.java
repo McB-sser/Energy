@@ -1,4 +1,4 @@
-﻿package mcbesser.energy;
+package mcbesser.energy;
 
 import java.util.ArrayList;
 import java.util.List;

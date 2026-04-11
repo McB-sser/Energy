@@ -1,4 +1,4 @@
-﻿package mcbesser.energy;
+package mcbesser.energy;
 
 import java.util.Objects;
 import net.kyori.adventure.text.Component;
