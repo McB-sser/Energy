@@ -741,6 +741,10 @@ public final class ChargerListener implements Listener {
     }
 
     private void spawnBatteryHologram(Location location) {
+        if (!hasNearbyViewer(location)) {
+            removeBatteryHologram(location);
+            return;
+        }
         removeBatteryHologram(location);
         Location displayLocation = location.clone().add(0.5, 1.02, 0.5);
         ItemDisplay display = location.getWorld().spawn(displayLocation, ItemDisplay.class, entity -> {
@@ -758,6 +762,10 @@ public final class ChargerListener implements Listener {
     }
 
     private void updateBatteryHologram(Location location) {
+        if (!hasNearbyViewer(location)) {
+            removeBatteryHologram(location);
+            return;
+        }
         UUID uuid = holograms.get(location);
         if (uuid == null || location.getWorld() == null) {
             return;
@@ -783,6 +791,38 @@ public final class ChargerListener implements Listener {
         if (entity != null) {
             entity.remove();
         }
+    }
+
+    public void syncBatteryHolograms() {
+        for (Location location : chargerInventories.keySet()) {
+            if (!hasNearbyViewer(location)) {
+                removeBatteryHologram(location);
+                continue;
+            }
+            UUID uuid = holograms.get(location);
+            Entity entity = uuid == null || location.getWorld() == null ? null : location.getWorld().getEntity(uuid);
+            if (!(entity instanceof ItemDisplay display) || !display.isValid()) {
+                spawnBatteryHologram(location);
+            }
+            updateBatteryHologram(location);
+        }
+    }
+
+    private boolean hasNearbyViewer(Location location) {
+        if (location == null || location.getWorld() == null) {
+            return false;
+        }
+        double maxDistance = plugin.getConfig().getDouble("display.max-view-distance", 64.0D);
+        double maxDistanceSquared = maxDistance * maxDistance;
+        for (org.bukkit.entity.Player player : Bukkit.getOnlinePlayers()) {
+            if (player == null || !player.isOnline() || player.isDead() || player.getWorld() != location.getWorld()) {
+                continue;
+            }
+            if (player.getLocation().distanceSquared(location) <= maxDistanceSquared) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setFlameState(Inventory menu, boolean active) {
