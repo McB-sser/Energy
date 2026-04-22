@@ -405,7 +405,8 @@ public final class ChargerListener implements Listener {
         if (chargeTasks.containsKey(location)) {
             return;
         }
-        BukkitTask task = Bukkit.getScheduler().runTaskTimer(plugin, () -> tickCharger(location), 20L, 20L);
+        long delay = 1L + Math.floorMod(location.getBlockX() * 31 + location.getBlockY() * 17 + location.getBlockZ(), 20);
+        BukkitTask task = Bukkit.getScheduler().runTaskTimer(plugin, () -> tickCharger(location), delay, 20L);
         chargeTasks.put(location, task);
     }
 

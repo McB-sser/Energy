@@ -23,7 +23,7 @@ public final class EnergyPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(upgradeMenuListener, this);
         Bukkit.getPluginManager().registerEvents(new RecipeUnlockListener(this), this);
         chargerListener.initializeSavedChargers();
-        Bukkit.getScheduler().runTaskTimer(this, chargerListener::syncBatteryHolograms, 20L, 20L);
+        Bukkit.getScheduler().runTaskTimer(this, chargerListener::syncBatteryHolograms, 16L, 20L);
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.discoverRecipe(RecipeRegistrar.batteryRecipeKey(this));
